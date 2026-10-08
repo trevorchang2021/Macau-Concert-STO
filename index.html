@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macau Concert STO · Investor Portal</title>
+  <!-- 引入 Google Fonts (Inter & Roboto Mono) 與 FontAwesome 圖示 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 class="gradient-text"><i class="fa-solid fa-microphone-lines"></i> Macau Concert STO</h1>
+    <p class="subtitle">
+      <i class="fa-solid fa-network-wired"></i> Polygon Amoy Testnet · Chain ID 80002<br>
+      <span style="display: inline-block; margin-top: 12px; padding: 6px 12px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 8px;">
+        <i class="fa-solid fa-file-contract"></i> 智能合約地址: 
+        <a href="https://amoy.polygonscan.com/address/0x16e6d8bA0Cc81eB16d553Ae0197864973d242817" target="_blank" style="color: #00f0ff; text-decoration: none; letter-spacing: 0.5px;" class="mono">
+          0x16e6d8bA0Cc81eB16d553Ae0197864973d242817 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 12px; margin-left: 4px;"></i>
+        </a>
+      </span>
+    </p>
+    <button id="connectBtn" class="glow-btn"><i class="fa-brands fa-ethereum"></i> Connect Wallet</button>
+    <p id="walletInfo" class="wallet-info mono"></p>
+  </header>
+
+  <main>
+    <!-- Vault Overview -->
+    <section class="card glass">
+      <h2><i class="fa-solid fa-vault"></i> Vault Overview</h2>
+      <div class="grid">
+        <div><span><i class="fa-regular fa-id-badge"></i> Current Role</span><b id="userRole" class="highlight">-</b></div>
+        <div><span><i class="fa-solid fa-file-signature"></i> Token Name</span><b id="tokenName">-</b></div>
+        <div><span><i class="fa-solid fa-tag"></i> Token Symbol</span><b id="tokenSymbol">-</b></div>
+        <div><span><i class="fa-solid fa-chart-pie"></i> Total Supply</span><b id="totalSupply" class="mono">-</b></div>
+        <div><span><i class="fa-solid fa-chart-line"></i> Total Distributed</span><b id="totalRevenue" class="mono">-</b></div>
+        <div><span><i class="fa-solid fa-wallet"></i> My Balance</span><b id="myBalance" class="mono highlight">-</b></div>
+        <div><span><i class="fa-solid fa-shield-halved"></i> Whitelist Status</span><b id="whitelistStatus">-</b></div>
+      </div>
+    </section>
+
+    <!-- Investor Minting -->
+    <section class="card glass">
+      <h2><i class="fa-solid fa-coins"></i> Investor · Purchase Tokens</h2>
+      <div class="input-group">
+        <label><i class="fa-solid fa-wallet"></i> Recipient Address</label>
+        <input id="mintTo" type="text" placeholder="0x..." class="mono" />
+      </div>
+      <div class="input-group">
+        <label><i class="fa-solid fa-money-bill-trend-up"></i> Amount to Purchase</label>
+        <input id="mintAmount" type="number" placeholder="e.g. 1000" class="mono" />
+      </div>
+      <button id="mintBtn" class="action-btn"><i class="fa-solid fa-hammer"></i> Mint Tokens</button>
+      <p id="mintStatus" class="status mono"></p>
+    </section>
+
+   <!-- Admin Panel -->
+    <section class="card glass admin-card">
+      <h2><i class="fa-solid fa-solar-panel"></i> Admin Panel · System Controls</h2>
+      <div class="input-group">
+        <label><i class="fa-solid fa-user-shield"></i> 1. KYC Whitelist (Add VIP)</label>
+        <input id="whitelistAddress" type="text" placeholder="Enter VIP Address 0x..." class="mono" />
+      </div>
+      <button id="whitelistBtn" class="action-btn secondary"><i class="fa-solid fa-address-book"></i> Approve VIP Status</button>
+      <p id="whitelistStatusMsg" class="status mono"></p>
+      
+      <hr style="border: 0; border-top: 1px solid rgba(123, 92, 255, 0.3); margin: 24px 0;">
+
+      <!-- 原有的：票房分紅區 -->
+      <button id="loadRevenueBtn" class="action-btn secondary"><i class="fa-solid fa-file-invoice-dollar"></i> 2. Load concert_revenue.json</button>
+      <pre id="revenuePreview" class="preview mono">Revenue data not loaded yet...</pre>
+      <button id="distributeBtn" class="action-btn distribute" disabled><i class="fa-solid fa-hand-holding-dollar"></i> 3. Call distributeRevenue()</button>
+      <p id="distributeStatus" class="status mono"></p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

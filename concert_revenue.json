@@ -1,0 +1,14 @@
+{
+    "project": "Macau Concert STO",
+    "concert_info": {
+      "venue": "Macau Venetian Cotai Arena",
+      "date": "2026-09-17"
+    },
+    "revenue_breakdown": {
+      "vip_tickets": { "subtotal": 1500000 },
+      "standard_tickets": { "subtotal": 4000000 },
+      "sponsorship": { "amount_hkd": 2000000 },
+      "merchandise": { "total_sales_hkd": 1000000 }
+    },
+    "total_revenue_hkd": 8500000
+  }
